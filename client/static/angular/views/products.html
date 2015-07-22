@@ -1,0 +1,37 @@
+<div ng-controller='ProductsController'>
+    <div class="leftColumn">
+        <td>
+            <input type="text" name="searchName" placeholder="search..." ng-model="searchName" />
+        </td>
+        <h2><u>Add a new product</u></h2>
+        <form>
+            <label for="name">Product Name:</label>
+            <br/>
+            <input type="text" name="name" ng-model="newProduct.name" placeholder="name..." />
+            <br/>
+            <label for="imageUrl">Image (url):</label>
+            <br/>
+            <input type="text" name="imageUrl" ng-model="newProduct.imageUrl" placeholder="http://..." />
+            <br/>
+            <label for="stock">Initial Quantity:</label>
+            <br/>
+            <select name="stock" ng-model="newProduct.stock" ng-options="n for n in [] | RangeFilter:1:100" />
+            <input type="submit" value="Create" ng-click="addProduct()" />
+            <br/>
+            <div class="error">
+                <span class="error" ng-repeat="error in addProductErrors">
+                    <span ng-bind="error"></span>
+                <br/>
+                </span>
+            </div>
+        </form>
+    </div>
+    <div class="mainColumn">
+        <div class="productContainer " ng-repeat="product in products|orderBy:name|filter:searchName ">
+            <img ng-src="{{product.imageUrl }}" />
+            <div class="centered" ng-bind="product.name "></div>
+            <div class="centered" ng-bind="product.stock "></div>
+        </div>
+    </div>
+</div>
+</div>

@@ -1,4 +1,4 @@
-var OrdersController = function ($scope, ProductsService, CustomersService, OrdersFactory, $timeout, _, $http) {
+var OrdersController = function ($rootScope, $scope, ProductsService, CustomersService, OrdersFactory, $timeout, _, $http) {
     $scope.customers = [];
     $scope.addOrderError = "";
     $scope.orders = [];

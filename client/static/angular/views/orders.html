@@ -1,5 +1,5 @@
 <div ng-controller='OrdersController'>
-    <h2>Add a new order</h2>
+    <h2>{{PAGE_TEXT.PRODUCTS_LINK}}</h2>
     <form>
         <label for="name">Customer</label>
         <select ng-model="newOrder.customerName" ng-options="customer.name for customer in customers"></select>

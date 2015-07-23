@@ -7,9 +7,15 @@
     <script src='bower_components/angular-cache-buster/angular-cache-buster.js' /></script>
     <script src='js/underscore.js' /></script>
     <script src='angular/routes/MainRoutes.js' /></script>
+    <script src='angular/constants/PAGE_TEXT.js' /></script>
+    <script src='angular/constants/AUTH.JS' /></script>
     <script src='angular/services/CustomersService.js' /></script>
     <script src='angular/services/ProductsService.js' /></script>
+    <script src='angular/services/AuthService.js' /></script>
+    <script src='angular/services/SessionService.js' /></script>
     <script src="angular/factories/OrdersFactory.js"></script>
+    <script src='angular/controllers/ApplicationController.js' /></script>
+    <script src='angular/controllers/LoginController.js' /></script>
     <script src='angular/controllers/CustomersController.js' /></script>
     <script src='angular/controllers/OrdersController.js' /></script>
     <script src='angular/controllers/ProductsController.js' /></script>
@@ -19,9 +25,12 @@
     <script src='angular/modules/main.js' /></script>
 </head>
 
-<body>
-    <div class="nav">
-        <a href="#/products">Products</a>||<a href="#/orders">Orders</a>||<a href="#/">Customers</a>
+<body ng-controller="ApplicationController">
+    <div class="nav" ng-if="isAuthenticated">
+        <a href="#/products">{{PAGE_TEXT.PRODUCTS_LINK}}</a>||<a href="#/orders">Orders</a>||<a href="#/">Customers</a>
+        <div class="rightJustified">
+            <a href="" ng-if="isAuthenticated" ng-click="logout()">logout</a>
+        </div>
     </div>
     <div ng-view=""></div>
 </body>

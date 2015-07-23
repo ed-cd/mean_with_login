@@ -2,6 +2,7 @@ module.exports = function (app) {
     var customers = require('../controllers/customers.js');
     var products = require("../controllers/products.js");
     var orders = require("../controllers/orders");
+    var login = require("../controllers/login");
 
     app.get("/", function (req, res) {
         owls.showAll(req, res);
@@ -37,5 +38,13 @@ module.exports = function (app) {
 
     app.get("/orders", function (req, res) {
         orders.show(req, res);
+    })
+
+    app.post("/login", function (req, res) {
+        login.login(req, res);
+    })
+
+    app.get("/logout", function (req, res) {
+        login.logout(req, res);
     })
 }

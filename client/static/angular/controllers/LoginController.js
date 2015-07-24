@@ -1,4 +1,4 @@
-var LoginController = function ($scope, $rootScope, AuthService, $location) {
+var LoginController = function ($scope, AuthService, $location) {
     $scope.credentials = {
         userName: ''
     };
@@ -8,7 +8,6 @@ var LoginController = function ($scope, $rootScope, AuthService, $location) {
         AuthService.login(credentials).then(function (user) {
             $scope.credentials.userName = "";
             $scope.addNameError = "";
-            $rootScope.isAuthenticated = true;
             $location.path("/");
         }, function () {
             $scope.addNameError = "couldn't log in";

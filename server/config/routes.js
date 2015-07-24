@@ -1,8 +1,11 @@
 module.exports = function (app) {
-    var customers = require('../controllers/customers.js');
-    var products = require("../controllers/products.js");
+    var customers = require('../controllers/customers');
+    var products = require("../controllers/products");
     var orders = require("../controllers/orders");
     var login = require("../controllers/login");
+    var category = require("../controllers/categories");
+    var topic = require("../controllers/topics");
+    var post = require("../controllers/posts");
 
     app.get("/", function (req, res) {
         owls.showAll(req, res);
@@ -46,5 +49,21 @@ module.exports = function (app) {
 
     app.get("/logout", function (req, res) {
         login.logout(req, res);
+    })
+
+    app.get("/checkLogin", function (req, res) {
+        login.check(req, res);
+    })
+
+    app.get("/getCategories", function (req, res) {
+        category.get(req, res);
+    })
+
+    app.post("/addTopic", function (req, res) {
+        topic.add(req, res);
+    })
+
+    app.get("/addPost", function (req, res) {
+        post.add(req, res);
     })
 }

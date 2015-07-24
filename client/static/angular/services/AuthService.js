@@ -24,17 +24,23 @@ var AuthService = function ($http, SessionService) {
             })
     }
 
+    authService.check = function () {
+        return $http
+            .get('/checkLogin')
+            .success(function (data, status, header, config) {
+                SessionService.create(data.sessionId, data.serverId,
+                    data.userType, data.userName);
+                return true;
+            })
+    }
+
     authService.isAuthenticated = function () {
         return !!SessionService.userId;
-    };
+    }
 
-    /*    authService.isAuthorized = function (authorizedRoles) {
-            if (!angular.isArray(authorizedRoles)) {
-                authorizedRoles = [authorizedRoles];
-            }
-            return (authService.isAuthenticated() &&
-                authorizedRoles.indexOf(SessionService.userRole) !== -1);
-        };*/
+    authService.getUserName = function () {
+        return SessionService.userName;
+    }
 
     return authService;
 }

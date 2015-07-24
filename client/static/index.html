@@ -13,7 +13,10 @@
     <script src='angular/services/ProductsService.js' /></script>
     <script src='angular/services/AuthService.js' /></script>
     <script src='angular/services/SessionService.js' /></script>
+    <script src='angular/services/TopicsService.js' /></script>
     <script src="angular/factories/OrdersFactory.js"></script>
+    <script src="angular/factories/CategoriesFactory.js"></script>
+    <script src='angular/controllers/DashBoardController.js' /></script>
     <script src='angular/controllers/ApplicationController.js' /></script>
     <script src='angular/controllers/LoginController.js' /></script>
     <script src='angular/controllers/CustomersController.js' /></script>
@@ -26,10 +29,10 @@
 </head>
 
 <body ng-controller="ApplicationController">
-    <div class="nav" ng-if="isAuthenticated">
-        <a href="#/products">{{PAGE_TEXT.PRODUCTS_LINK}}</a>||<a href="#/orders">Orders</a>||<a href="#/">Customers</a>
+    <div class="nav" ng-if="isAuthenticated()">
+        <a href="#/products">{{PAGE_TEXT.PRODUCTS_LINK}}</a>||<a href="#/orders">Orders</a>||<a href="#/">Customers</a>||<a href="#/dashboard">Dashboard</a>
         <div class="rightJustified">
-            <a href="" ng-if="isAuthenticated" ng-click="logout()">logout</a>
+            <a href="" ng-if="isAuthenticated()" ng-click="logout()">logout</a>
         </div>
     </div>
     <div ng-view=""></div>

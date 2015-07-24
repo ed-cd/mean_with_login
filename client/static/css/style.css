@@ -33,3 +33,12 @@
 .rightJustified {
     text-align: right;
 }
+.equalWidth {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    vertical-align: top;
+}
+.topicForm {
+    width: 300px;
+}

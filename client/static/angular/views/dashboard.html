@@ -1,0 +1,46 @@
+<div ng-controller='DashBoardController'>
+    <h2>Welcome <span ng-bind="userName"></span></h2>
+    <form novalidate name="topicForm" class="topicForm" ng-submit="addTopic(topicForm.$valid)">
+        <label class="equalWidth">Topic:</label>
+        <input name="name" type="text" ng-model="newTopic.name" class="form-control" required>
+        <p class="error" ng-show="topicForm.name.$error.required">Topic required</p>
+
+        <label class="equalWidth">Description:</label>
+        <textarea name="description" ng-model="newTopic.description" class="form-control" required></textarea>
+        <p class="error" ng-show="topicForm.description.$error.required">Description required</p>
+
+        <label class="equalWidth">Category:</label>
+        <select name="category" ng-model="newTopic.category" class="form-control" ng-options="category for category in categories" required></select>
+        <p class="error" ng-show="topicForm.category.$error.required">Category required</p>
+
+        <div class="rightJustified">
+            <input type="submit" value="Submit" ng-disabled="topicForm.$invalid" />
+        </div>
+        <span class="error">{{addTopicError}}</span>
+    </form>
+    <!--    <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>
+                <input type="text" name="searchName" placeholder="search name..." ng-model="searchName" />
+            </td>
+        </tr>
+        <tr>
+            <th>Customer Name</th>
+            <th>Created Date</th>
+            <th>Actions</th>
+        </tr>
+        <tr ng-repeat="customer in customers | orderBy:'-createdDate' | filter:searchName">
+            <td>
+                <span ng-bind="customer.name"></span>
+            </td>
+            <td>
+                {{customer.createdDate | date:"mediumDate"}}
+            </td>
+            <td>
+                <button ng-click="removeCustomer(customer)">Remove</button>
+            </td>
+        </tr>
+    </table>-->
+</div>

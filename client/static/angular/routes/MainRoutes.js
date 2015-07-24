@@ -7,6 +7,8 @@ var MainRoutes = function ($routeProvider) {
         templateUrl: "angular/views/orders.html"
     }).when("/login", {
         templateUrl: "angular/views/loginForm.html"
+    }).when("/dashboard", {
+        templateUrl: "angular/views/dashboard.html"
     }).otherwise({
         redirectTo: "/"
     })

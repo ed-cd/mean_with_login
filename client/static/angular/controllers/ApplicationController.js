@@ -1,7 +1,7 @@
-var ApplicationController = function ($rootScope, $scope, AuthService, $location) {
+var ApplicationController = function ($scope, AuthService, $location) {
     $scope.currentUser = null;
     $scope.userRoles = USER_ROLES;
-    $scope.isAuthorized = AuthService.isAuthorized;
+    $scope.isAuthenticated = AuthService.isAuthenticated;
 
     $scope.setCurrentUser = function (user) {
         $scope.currentUser = user;
@@ -9,7 +9,6 @@ var ApplicationController = function ($rootScope, $scope, AuthService, $location
 
     $scope.logout = function () {
         AuthService.logout().then(function () {
-            $rootScope.isAuthenticated = false;
             $location.path("/login");
         })
     }
